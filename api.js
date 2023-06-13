@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
   client.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
+    res.send('Hello from App Engine!');
   });
-  res.send('Hello from App Engine!');
 });
 
 
