@@ -15,7 +15,8 @@ app.get('/', (req, res) => {
   client.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
-    res.send('Hello from App Engine!');
+    console.log(err);
+    res.send('Hello from App Engine POST DB connection!');
   });
 });
 
