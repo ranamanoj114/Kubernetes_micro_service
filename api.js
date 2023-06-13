@@ -12,12 +12,30 @@ const client = new Client({
 
 
 app.get('/', (req, res) => {
+
   client.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
     console.log(err);
-    res.send('Hello from App Engine POST DB connection!');
   });
+
+  const query = 'SELECT * FROM person");'
+  client.query(query, (err, res) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    var names = ""
+    for (let row of res.rows) {
+        console.log(row);
+        names = names + " "+ row
+    }
+    res.send(names);
+
+    client.end();
+});
+
+
 });
 
 
