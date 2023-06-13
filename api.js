@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     console.log(err);
   });
 
-  const query = 'SELECT * FROM person");'
+  const query = 'SELECT * FROM person;'
   client.query(query, (err, res) => {
     if (err) {
         console.error(err);
