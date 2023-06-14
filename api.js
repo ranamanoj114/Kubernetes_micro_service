@@ -3,7 +3,7 @@ const app = express();
 const { Client } = require('pg')
 const client = new Client({
   user: 'nagp_db',
-  host: '10.8.130.18',
+  host: '10.8.129.111',
   database: 'nagp_db',
   password: 'password',
   port: 80,
