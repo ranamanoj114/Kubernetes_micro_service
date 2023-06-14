@@ -19,14 +19,14 @@ app.get('/', (req, res) => {
     console.log(err);
   });
 
-  const query = 'SELECT * FROM person");'
+  const query = 'SELECT * FROM person;'
   client.query(query, (err, response) => {
     if (err) {
         console.error(err);
         return;
     }
-    console.log(response)
-    var names = ""
+    console.log(response);
+    var names = "";
     for (let row of response.rows) {
         console.log(row);
         names = names + " "+ row
