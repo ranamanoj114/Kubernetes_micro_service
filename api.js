@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
     var names = "";
     for (let row of response.rows) {
         console.log(row);
-        names = names + " "+ row
+        names = names + " "+ row.name + "\n"
     }
     res.send(names);
 
