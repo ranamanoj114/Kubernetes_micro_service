@@ -2,16 +2,19 @@ const express = require('express');
 const app = express();
 const { Client } = require('pg')
 const client = new Client({
-  user: 'nagp_db',
-  host: '10.8.129.111',
-  database: 'nagp_db',
-  password: 'password',
-  port: 80,
+  user: process.env.db_user_name,
+  host: process.env.db_hostname,
+  database: process.env.db_name,
+  password: process.env.db_password,
+  port: process.env.db_port,
 })
 
 
 
 app.get('/', (req, res) => {
+  console.log(process.env);
+  console.log(client.user);
+  console.log(client.password);
 
   client.connect(function(err) {
     if (err) throw err;
@@ -25,11 +28,11 @@ app.get('/', (req, res) => {
         console.error(err);
         return;
     }
-    console.log(response);
-    var names = "";
+    console.log(response)
+    var names = ""
     for (let row of response.rows) {
         console.log(row);
-        names = names + " "+ row.name + "\n"
+        names = names + " "+ row.name
     }
     res.send(names);
 
