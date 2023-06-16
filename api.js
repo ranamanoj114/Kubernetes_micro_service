@@ -1,46 +1,61 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const app = express();
-const { Client } = require('pg')
-const client = new Client({
+const Pool = require('pg').Pool
+const pool = new Pool({
   user: process.env.db_user_name,
   host: process.env.db_hostname,
   database: process.env.db_name,
   password: process.env.db_password,
   port: process.env.db_port,
 })
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
 
-
-
+// Web service 
 app.get('/', (req, res) => {
-  console.log(process.env);
-  console.log(client.user);
-  console.log(client.password);
-
-  client.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-    console.log(err);
-  });
-
-  const query = 'SELECT * FROM person;'
-  client.query(query, (err, response) => {
-    if (err) {
-        console.error(err);
-        return;
+  pool.query('SELECT * FROM person;', (error, results) => {
+    if (error) {
+      console.log(error)
+      throw error
     }
-    console.log(response)
-    var names = ""
-    for (let row of response.rows) {
-        console.log(row);
-        names = names + " "+ row.name
-    }
-    res.send(names);
-
-    client.end();
+    res.status(200).json(results.rows)
+  })
 });
 
 
+// Service to create table and insert data for purpose of assignment testing.
+// Web service 
+app.get('/insert', (req, res) => {
+  pool.query('CREATE TABLE person(`name` VARCHAR(100));', (error, results) => {
+    if (error) {
+      console.log(error)
+      throw error
+    }
+        // Query to insert multiple rows
+        let query = `INSERT INTO person 
+        (name) VALUES ?;`;
+
+        // Values to be inserted
+        let values = [
+                      ['Amit'],
+                      ['Rishi'],
+                      ['Akash'],
+                      ['Pratik'],
+                      ['Mangesh']
+                    ];
+
+    pool.query(query, [values], (err, rows) => {
+      if (err) throw err;
+      console.log("All Rows Inserted");
+      });
+  })
 });
+//--------------------------------------------------------------------------
 
 
 // Listen to the App Engine-specified port, or 8080 otherwise
