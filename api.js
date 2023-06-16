@@ -30,38 +30,45 @@ app.get('/', (req, res) => {
 
 // Service to create table and insert data for purpose of assignment testing.
 // Web service 
-app.get('/insert', (req, res) => {
-  pool.query('CREATE TABLE person(name VARCHAR(100));', (error, results) => {
+app.get('/create', (req, res) => {
+  pool.query('CREATE TABLE IF NOT EXISTS person(name VARCHAR(100));', (error, results) => {
     if (error) {
       console.log(error)
       throw error
     }
-    console.log("Table created successfully");
-
-
-        // Query to insert multiple rows
-        let query = `INSERT INTO person 
-        (name) VALUES ?;`;
-
-        // Values to be inserted
-        let values = [
-                      ['Amit'],
-                      ['Rishi'],
-                      ['Akash'],
-                      ['Pratik'],
-                      ['Mangesh']
-                    ];
-
-    pool.query(query, [values], (err, rows) => {
-      if (err) {
-        console.log(error)
-        throw err;
-      }
-      console.log("All Rows Inserted");
-      res.status(200)
-      });
-  })
+    console.log("Table created successfully");})
+    res.send("Table created successfully")
 });
+
+// Insert data
+app.get('/insert', (req, res) => {
+ // Query to insert multiple rows
+ let query = "INSERT INTO person (name) VALUES ?";
+
+ // Values to be inserted
+ let values = [
+               ['Amit'],
+               ['Rishi'],
+               ['Akash'],
+               ['Pratik'],
+               ['Mangesh']
+             ];
+
+   
+       
+
+             pool.query(query, [values], (err, rows) => {
+              if (err) {
+                console.log(error)
+                throw err;
+              }
+              console.log("All Rows Inserted");
+              res.send("All Rows Inserted");
+              });    
+
+            
+});
+
 //--------------------------------------------------------------------------
 
 
