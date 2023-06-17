@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: nagp-db
-    strategy:
+  strategy:
       type: Recreate
   replicas: 1
   template:
