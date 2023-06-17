@@ -57,8 +57,8 @@ app.get('/insert', (req, res) => {
    
        
 
-             pool.query(query, [values], (err, rows) => {
-              if (err) {
+             pool.query(query, [values], (error, rows) => {
+              if (error) {
                 console.log(error)
                 throw err;
               }
