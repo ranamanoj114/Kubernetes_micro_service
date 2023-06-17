@@ -1,42 +1,43 @@
- apiVersion: apps/v1
- kind: StatefulSet
- metadata:
-   name: nagp-db
- spec:
-   serviceName: db-service
-   selector:
-     matchLabels:
-       app: nagp-db
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nagp-db
+spec:
+  serviceName: db-service
+  selector:
+    matchLabels:
+      app: nagp-db
     strategy:
-       type: Recreate
-   replicas: 1
-   template:
-     metadata:
-       labels:
-         app: nagp-db
-     spec:
-       containers:
-         - name: nagp-db-container
-           image: postgres:13
-           ports:
-             - containerPort: 5432
-               name: "postgres"
-           volumeMounts:
-             - mountPath: "/var/lib/postgresql/data"
-               name: nagp-postgres-data-storage
-           env:
-             - name: POSTGRES_DB
-               value: nagp_db
-             - name: POSTGRES_USER
-               value: nagp_db
-             - name: POSTGRES_PASSWORD
-               valueFrom: 
+      type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nagp-db
+    spec:
+      containers:
+        - name: nagp-db-container
+          image: postgres:13
+          ports:
+            - containerPort: 5432
+              name: postgres
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: nagp-postgres-data-storage
+          env:
+            - name: POSTGRES_DB
+              value: nagp_db
+            - name: POSTGRES_USER
+              value: nagp_db
+            - name: POSTGRES_PASSWORD
+              valueFrom:
                 secretKeyRef:
                   name: nagp-secret
-                  key: db_password                  
-             - name: PGDATA
-               value: /var/lib/postgresql/data/nagp/
-       volumes:
-         - name: nagp-postgres-data-storage
-           persistentVolumeClaim:
-             claimName: nagp-persisent-volume-claim
+                  key: db_password
+            - name: PGDATA
+              value: /var/lib/postgresql/data/nagp/
+      volumes:
+        - name: nagp-postgres-data-storage
+          persistentVolumeClaim:
+            claimName: nagp-persisent-volume-claim
