@@ -38,8 +38,7 @@ app.get('/create', (req, res) => {
       throw error
     }
     console.log("Table created successfully");
-  })
-
+    
     let query = "INSERT INTO person (name) VALUES ('Amit'), ('Ram'), ('AKASH'), ('Pratik'), ('Shayam'), ('Rohan'), ('Teena'), ('Meena');";
     pool.query(query, (error, rows) => {
       if (error) {
@@ -49,6 +48,9 @@ app.get('/create', (req, res) => {
       console.log("All Rows Inserted");
       res.send("All Rows Inserted");
       });
+  });
+
+    
 });
 //--------------------------------------------------------------------------
 
