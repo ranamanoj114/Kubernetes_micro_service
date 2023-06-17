@@ -15,7 +15,7 @@ spec:
    spec:
      containers:
      - name: nagp-app-container
-       image: manojrana114/kubernetes_micro_service:9
+       image: manojrana114/kubernetes_micro_service:1
        envFrom:
         - configMapRef: 
             name: nagp-configmap
