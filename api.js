@@ -9,6 +9,7 @@ const pool = new Pool({
   password: process.env.db_password,
   port: process.env.db_port,
 })
+
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({
@@ -49,21 +50,6 @@ app.get('/create', (req, res) => {
       res.send("All Rows Inserted");
       });
 });
-
-// Insert data
-// app.get('/insert', (req, res) => {
-//  // Query to insert multiple rows
-//   let query = "INSERT INTO person (name) VALUES ('Amit'), ('Ram'), ('AKASH'), ('Pratik'), ('Shayam'), ('Rohan'), ('Teena'), ('Meena');";
-//   pool.query(query, (error, rows) => {
-//     if (error) {
-//       console.log(error)
-//       throw error;
-//     }
-//     console.log("All Rows Inserted");
-//     res.send("All Rows Inserted");
-//     });            
-// });
-
 //--------------------------------------------------------------------------
 
 
