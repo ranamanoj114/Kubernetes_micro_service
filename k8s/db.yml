@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app: nagp-db
   strategy:
-      type: Recreate
+    type: Recreate
   replicas: 1
   template:
     metadata:
