@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nagp-app
+spec:
+ replicas: 4
+ selector:
+   matchLabels:
+    app: nagp-app
+ template:
+   metadata:
+    name: nagp-pod
+    labels:
+     app: nagp-app
+   spec:
+     containers:
+     - name: nagp-app-container
+       image: manojrana114/kubernetes_micro_service:9
+       envFrom:
+        - configMapRef: 
+            name: nagp-configmap
+        - secretRef: 
+            name: nagp-secret
+
