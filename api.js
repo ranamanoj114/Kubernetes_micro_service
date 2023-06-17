@@ -43,30 +43,15 @@ app.get('/create', (req, res) => {
 // Insert data
 app.get('/insert', (req, res) => {
  // Query to insert multiple rows
- let query = "INSERT INTO person (name) VALUES ?";
-
- // Values to be inserted
- let values = [
-               ['Amit'],
-               ['Rishi'],
-               ['Akash'],
-               ['Pratik'],
-               ['Mangesh']
-             ];
-
-   
-       
-
-             pool.query(query, [values], (error, rows) => {
-              if (error) {
-                console.log(error)
-                throw err;
-              }
-              console.log("All Rows Inserted");
-              res.send("All Rows Inserted");
-              });    
-
-            
+  let query = "INSERT INTO person (name) VALUES ('Amit'), ('Ram'), ('AKASH'), ('Pratik'), ('Shayam'), ('Rohan'), ('Teena'), ('Meena');";
+  pool.query(query, (error, rows) => {
+    if (error) {
+      console.log(error)
+      throw error;
+    }
+    console.log("All Rows Inserted");
+    res.send("All Rows Inserted");
+    });            
 });
 
 //--------------------------------------------------------------------------
