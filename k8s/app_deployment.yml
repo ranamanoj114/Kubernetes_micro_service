@@ -16,6 +16,13 @@ spec:
      containers:
      - name: nagp-app-container
        image: manojrana114/kubernetes_micro_service:1
+       resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
        envFrom:
         - configMapRef: 
             name: nagp-configmap
