@@ -6,7 +6,7 @@ This guide will list down resources and various links as per requirement of assi
 - [Code Repository ](https://github.com/ranamanoj114/Kubernetes_micro_service)
 - [Docker hub URL](https://hub.docker.com/repository/docker/manojrana114/kubernetes_micro_service/general)
 - Service API URL: This will be available when we deploy app on GCP or at some other cloud provider. Please contact me if app needs to be verified.
-- [Screen Recording]()
+- [Screen Recording](https://nagarro-my.sharepoint.com/:v:/p/manoj_rana/Ed-sWudj3etDn58yVLzBhIkBgn9Lxxu-NXPjhvxFENk7Dg?e=Z2tQBM)
 
 ## Installation Steps
 Apply yml files supplied in k8s directory as mentioned below.
