@@ -29,6 +29,6 @@ One above steps are executed, find the public url from GCP or used cloud provide
 <img width="1421" alt="Screenshot 2023-06-19 at 10 58 57 AM" src="https://github.com/ranamanoj114/Kubernetes_micro_service/assets/114919655/1baa92bc-8da8-4cb2-869d-48a85fbb465d">
 
 There are two service exposed in app to test the assignment.
-1. To create table and insert data into it (/insert)
+1. To create table and insert data into it (/create)
 2. Get data from table (/)
 
