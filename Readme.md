@@ -22,7 +22,7 @@ Apply yml files as mentioned below.
 8. Kubectl apply -f app_service.yml
 ```
 
-One above steps are executed, find the public url from GCP or used cloud provider.
+Once above steps are executed, find the public url from GCP or used cloud provider.
 
 
 
