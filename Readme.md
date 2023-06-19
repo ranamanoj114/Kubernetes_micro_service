@@ -12,14 +12,14 @@ This guide will list down resources and various links as per requirement of assi
 Apply yml files supplied in k8s directory as mentioned below.
 
 ```sh
-1. Kubectl apply -f config_map.yml
-2. Kubectl apply -f secrets.yml
-3. Kubectl apply -f storage.yml
-4. Kubectl apply -f pvc.yml
-5. Kubectl apply -f db.yml
-6. Kubectl apply -f db_services.yml
-7. Kubectl apply -f app.yml
-8. Kubectl apply -f app_service.yml
+1. kubectl apply -f config_map.yml
+2. kubectl apply -f secrets.yml
+3. kubectl apply -f storage.yml
+4. kubectl apply -f pvc.yml
+5. kubectl apply -f db.yml
+6. kubectl apply -f db_services.yml
+7. kubectl apply -f app.yml
+8. kubectl apply -f app_service.yml
 ```
 
 Once above steps are executed, find the public url from GCP or used cloud provider.
