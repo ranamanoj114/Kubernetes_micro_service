@@ -9,7 +9,7 @@ This guide will list down resources and various links as per requirement of assi
 - [Screen Recording]()
 
 ## Installation Steps
-Apply yml files as mentioned below.
+Apply yml files supplied in k8s directory as mentioned below.
 
 ```sh
 1. Kubectl apply -f config_map.yml
