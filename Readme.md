@@ -18,7 +18,7 @@ Apply yml files supplied in k8s directory as mentioned below.
 4. kubectl apply -f pvc.yml
 5. kubectl apply -f db.yml
 6. kubectl apply -f db_service.yml
-7. kubectl apply -f app.yml
+7. kubectl apply -f app_deployment.yml
 8. kubectl apply -f app_service.yml
 ```
 
